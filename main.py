@@ -1,7 +1,62 @@
+import tkinter as tk
 import customtkinter as ctk
 
+# Window Properties
 app = ctk.CTk()
-app.geometry("500x500")
+app.minsize(600, 450)
 app.title("GUI Experiments")
 app.resizable(True, True)
+
+# Grid weight config
+app.grid_rowconfigure(0, weight=0) # header
+app.grid_rowconfigure(1, weight=1) # sidebar, content, etc.
+
+app.grid_columnconfigure(0, weight=1) # sidebar
+app.grid_columnconfigure(1, weight=1) # content
+
+# Frame data
+frame_specs = [
+    # Name, row, col, padx, pady, bg_color
+    {
+        "name": "header",
+        "row": 0,
+        "column": 0,
+        "columnspan": 2,
+        "padx": 5,
+        "pady": 5,
+        "color": "#ffffff",
+        "sticky": "ew"
+    },
+    {
+        "name": "sidebar",
+        "row": 1,
+        "column": 0,
+        "padx": 5,
+        "pady": 5,
+        "color": "#ff0000",
+        "sticky": "ns"
+    },
+    {
+        "name": "content",
+        "row": 1,
+        "column": 1,
+        "padx": 5,
+        "pady": 5,
+        "color": "#0011ff",
+        "sticky": "nsew"
+    }
+]
+
+frames = {}
+
+for spec in frame_specs:
+    frame = ctk.CTkFrame(app, fg_color=spec["color"])
+    frame.grid(row=spec["row"],
+               column=spec["column"],
+               padx=spec["padx"],
+               pady=spec["pady"],
+               sticky=spec["sticky"])
+    frames[spec["name"]] = frame
+
+
 app.mainloop()
