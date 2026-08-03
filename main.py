@@ -11,7 +11,7 @@ app.resizable(True, True)
 app.grid_rowconfigure(0, weight=0) # header
 app.grid_rowconfigure(1, weight=1) # sidebar, content, etc.
 
-app.grid_columnconfigure(0, weight=1) # sidebar
+app.grid_columnconfigure(0, weight=0) # sidebar
 app.grid_columnconfigure(1, weight=1) # content
 
 # Frame data
@@ -19,11 +19,12 @@ frame_specs = [
     # Name, row, col, padx, pady, bg_color
     {
         "name": "header",
+        "height": 100,
         "row": 0,
         "column": 0,
         "columnspan": 2,
-        "padx": 5,
-        "pady": 5,
+        "padx": 2,
+        "pady": 2,
         "color": "#ffffff",
         "sticky": "ew"
     },
@@ -34,7 +35,7 @@ frame_specs = [
         "padx": 5,
         "pady": 5,
         "color": "#ff0000",
-        "sticky": "ns"
+        "sticky": "nsw"
     },
     {
         "name": "content",
@@ -47,15 +48,25 @@ frame_specs = [
     }
 ]
 
+# Puts created frames into frames dict.
 frames = {}
-
 for spec in frame_specs:
     frame = ctk.CTkFrame(app, fg_color=spec["color"])
-    frame.grid(row=spec["row"],
+
+    if "width" in spec:
+        frame.configure(width=spec["width"])
+    if "height" in spec:
+        frame.configure(height=spec["height"])
+
+    frame.grid(
+               row=spec["row"],
                column=spec["column"],
                padx=spec["padx"],
                pady=spec["pady"],
-               sticky=spec["sticky"])
+               sticky=spec.get("sticky", "nsew"),
+               columnspan=spec.get("columnspan", 1),
+               rowspan=spec.get("rowspan", 1)
+               )
     frames[spec["name"]] = frame
 
 
