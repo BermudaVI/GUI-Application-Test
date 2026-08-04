@@ -1,7 +1,40 @@
 import tkinter as tk
 import customtkinter as ctk
+import theme
 
 # ctk.set_appearance_mode("system")
+
+# Frame data
+FRAME_SPECS = [
+    {
+        "name": "header",
+        "row": 0,
+        "column": 0,
+        "columnspan": 2,
+        "padx": 5,
+        "pady": (5, 2.5),
+        "color": theme.HEADER,
+        "sticky": "ew"
+    },
+    {
+        "name": "sidebar",
+        "row": 1,
+        "column": 0,
+        "padx": (5, 2.5),
+        "pady": (2.5, 5),
+        "color": theme.SIDEBAR,
+        "sticky": "nsw"
+    },
+    {
+        "name": "content",
+        "row": 1,
+        "column": 1,
+        "padx": (2.5, 5),
+        "pady": (2.5, 5),
+        "color": theme.CONTENT,
+        "sticky": "nsew"
+    }
+]
 
 def create_app():
     # Creates widnow and defines properties
@@ -9,6 +42,7 @@ def create_app():
     app.minsize(600, 450)
     app.title("GUI Experiments")
     app.resizable(True, True)
+    app.configure(fg_color=theme.WINDOW)
 
     # Grid weight config
     app.grid_rowconfigure(0, weight=0) # header
@@ -22,8 +56,8 @@ def create_app():
 # Create's frames, places into a dict. Returns dict.
 def create_frames(app):
     frames = {}
-    for spec in frame_specs:
-        frame = ctk.CTkFrame(app)
+    for spec in FRAME_SPECS:
+        frame = ctk.CTkFrame(master=app)
         frame.configure(
             fg_color=spec.get("color", "transparent"),
             width=spec.get("width"),
@@ -46,34 +80,3 @@ def create_frames(app):
         frames[spec["name"]] = frame
     return frames
 
-# Frame data
-frame_specs = [
-    {
-        "name": "header",
-        "row": 0,
-        "column": 0,
-        "columnspan": 2,
-        "padx": 5,
-        "pady": (5, 2.5),
-        "color": "#bbe44b",
-        "sticky": "ew"
-    },
-    {
-        "name": "sidebar",
-        "row": 1,
-        "column": 0,
-        "padx": (5, 2.5),
-        "pady": (2.5, 5),
-        "color": "#ff0000",
-        "sticky": "nsw"
-    },
-    {
-        "name": "content",
-        "row": 1,
-        "column": 1,
-        "padx": (2.5, 5),
-        "pady": (2.5, 5),
-        "color": "#0011ff",
-        "sticky": "nsew"
-    }
-]
