@@ -2,7 +2,7 @@ import tkinter as tk
 import customtkinter as ctk
 import theme
 
-# ctk.set_appearance_mode("system")
+ctk.set_appearance_mode("system")
 
 # Frame data
 FRAME_SPECS = [
@@ -11,27 +11,27 @@ FRAME_SPECS = [
         "row": 0,
         "column": 0,
         "columnspan": 2,
-        "padx": 5,
-        "pady": (5, 2.5),
-        "color": theme.HEADER,
+        "padx": theme.WINDOW_PAD,
+        "pady": (theme.WINDOW_PAD, theme.FRAME_GAP),
+        "color": theme.HEADER_BG,
         "sticky": "ew"
     },
     {
         "name": "sidebar",
         "row": 1,
         "column": 0,
-        "padx": (5, 2.5),
-        "pady": (2.5, 5),
-        "color": theme.SIDEBAR,
+        "padx": (theme.WINDOW_PAD, theme.FRAME_GAP),
+        "pady": (theme.FRAME_GAP, theme.WINDOW_PAD),
+        "color": theme.SIDEBAR_BG,
         "sticky": "nsw"
     },
     {
         "name": "content",
         "row": 1,
         "column": 1,
-        "padx": (2.5, 5),
-        "pady": (2.5, 5),
-        "color": theme.CONTENT,
+        "padx": (theme.FRAME_GAP, theme.WINDOW_PAD),
+        "pady": (theme.FRAME_GAP, theme.WINDOW_PAD),
+        "color": theme.CONTENT_BG,
         "sticky": "nsew"
     }
 ]
@@ -42,7 +42,7 @@ def create_app():
     app.minsize(600, 450)
     app.title("GUI Experiments")
     app.resizable(True, True)
-    app.configure(fg_color=theme.WINDOW)
+    app.configure(fg_color=theme.WINDOW_BG)
 
     # Grid weight config
     app.grid_rowconfigure(0, weight=0) # header

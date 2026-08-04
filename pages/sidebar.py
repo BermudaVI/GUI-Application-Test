@@ -11,12 +11,13 @@ def show_calendar():
     print("calendar")
 
 # Button data
-button_specs = [
+BUTTON_SPECS = [
     {
         "name": "home_btn",
         "text": "Home",
         "row": 0,
-        "command": show_home
+        "command": show_home,
+        "pady": (theme.WINDOW_PAD, theme.FRAME_GAP)
     },
     {
         "name": "tasks_btn",
@@ -37,21 +38,22 @@ def build(parent):
     parent.grid_columnconfigure(0, weight=1)
 
     buttons = {}
-    for spec in button_specs:
+    for spec in BUTTON_SPECS:
         btn = ctk.CTkButton(
             master=parent,
             text = spec["text"],
             fg_color = theme.SIDEBAR_BTN_FG,
-            text_color= theme.SIDEBAR_BTN_TEXT,
-            hover_color= theme.SIDEBAR_BTN_HOVER,
+            text_color = theme.SIDEBAR_BTN_TEXT,
+            anchor = "w",
+            hover_color = theme.SIDEBAR_BTN_HOVER,
             command = spec["command"]
         )
 
         btn.grid(
             row = spec["row"],
             sticky = "ew",
-            padx = 5,
-            pady = 2.5
+            padx=spec.get("padx", theme.SIDEBAR_BTN_PADX),
+            pady=spec.get("pady", theme.SIDEBAR_BTN_PADY)
         )
 
         buttons[spec["name"]] = btn
