@@ -11,29 +11,31 @@ def refresh():
 BUTTON_SPECS = [
     {
         "name": "sidebar_toggle_btn",
-        "text": "hmbrgr",
+        "text": "☰",
         "column": 0,
         "command": toggle_sidebar,
-        "anchor": "w",
+        "anchor": "center",
         "sticky": "w",
         "padx": theme.HEADER_LEFT_BTN_PADX,
-        "pady": theme.HEADER_BTN_PADY
+        "pady": theme.HEADER_BTN_PADY,
+        "font": theme.HEADING_FONT
     },
     {
         "name": "refresh_btn",
-        "text": "refresh",
+        "text": "↻",
         "column": 1,
         "command": refresh,
-        "anchor": "e",
+        "anchor": "center",
         "sticky": "e",
         "padx": theme.HEADER_RIGHT_BTN_PADX,
         "pady": theme.HEADER_BTN_PADY
     },
 ]
 
-# Forms sidebar content
+# Forms header content
 def build(parent):
     parent.grid_columnconfigure(1, weight=1)
+    parent.grid_columnconfigure(0, weight=0)
 
     buttons = {}
     for spec in BUTTON_SPECS:
@@ -44,7 +46,9 @@ def build(parent):
             text_color = theme.SIDEBAR_BTN_TEXT,
             anchor = spec.get("anchor", "center"),
             hover_color = theme.SIDEBAR_BTN_HOVER,
-            command = spec["command"]
+            command = spec["command"],
+            font=spec.get("font", theme.BODY_FONT),
+            width=30, height=30
         )
 
         btn.grid(
@@ -52,7 +56,7 @@ def build(parent):
             row=0,
             sticky=spec.get("sticky"),
             padx=spec.get("padx", 0),
-            pady=spec.get("pady", 2.5),
+            pady=spec.get("pady", 2.5)
         )
 
         buttons[spec["name"]] = btn

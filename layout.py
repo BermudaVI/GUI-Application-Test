@@ -40,7 +40,7 @@ def create_app():
     # Creates widnow and defines properties
     app = ctk.CTk()
     app.minsize(600, 450)
-    app.title("GUI Experiments")
+    app.title("Workspace Dashboard")
     app.resizable(True, True)
     app.configure(fg_color=theme.WINDOW_BG)
 
@@ -62,7 +62,7 @@ def create_frames(app):
             fg_color=spec.get("color", "transparent"),
             width=spec.get("width"),
             height=spec.get("height"),
-            border_width=spec.get("border_width", 0),
+            border_width=spec.get("border_width", 0)
         )
 
         if "border_color" in spec:

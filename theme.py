@@ -1,8 +1,10 @@
+import customtkinter as ctk
+
 # Master
 WINDOW_BG = ("#EBEBEB", "#202020")
 HEADER_BG = ("#F5F5F5", "#252526")
 SIDEBAR_BG = ("#ECECEC", "#2D2D30")
-CONTENT_BG = ("#FFFFFF", "#1E1E1E")
+CONTENT_BG = ("#FFFFFF", "#313131") 
 BORDER = ("#D6D6D6", "#3C3C3C")
 ACCENT = ("#0078D4", "#4CC2FF")
 TEXT = ("#202020", "#F0F0F0")
@@ -38,3 +40,41 @@ SIDEBAR_BTN_PADY = FRAME_GAP
 
 # Content
 CONTENT_PAD = 10
+
+# Fonts
+TITLE_FONT = None
+HEADING_FONT = None
+BODY_FONT = None
+SMALL_FONT = None
+BUTTON_FONT = None
+
+def init_fonts():
+    global TITLE_FONT, HEADING_FONT, BODY_FONT, SMALL_FONT, BUTTON_FONT
+
+    TITLE_FONT = ctk.CTkFont(
+        family="League Spartan",
+        size=28,
+        weight="bold"
+    )
+
+    HEADING_FONT = ctk.CTkFont(
+        family="League Spartan",
+        size=20,
+        weight="bold"
+    )
+
+    BODY_FONT = ctk.CTkFont(
+        family="League Spartan",
+        size=14
+    )
+
+    SMALL_FONT = ctk.CTkFont(
+        family="League Spartan",
+        size=12
+    )
+
+    BUTTON_FONT = ctk.CTkFont(
+        family="League Spartan",
+        size=15,
+        weight="bold"
+    )

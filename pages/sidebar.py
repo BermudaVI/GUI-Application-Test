@@ -46,7 +46,8 @@ def build(parent):
             text_color = theme.SIDEBAR_BTN_TEXT,
             anchor = "w",
             hover_color = theme.SIDEBAR_BTN_HOVER,
-            command = spec["command"]
+            command = spec["command"],
+            font=spec.get("font", theme.BODY_FONT)
         )
 
         btn.grid(
