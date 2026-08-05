@@ -26,3 +26,5 @@ htmlcov/
 
 # Windows
 Thumbs.db
+
+config/
