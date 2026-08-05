@@ -18,16 +18,19 @@ SIDEBAR_BTN_SELECTED = ACCENT
 SIDEBAR_BTN_TEXT = TEXT
 SIDEBAR_BTN_TEXT_DISABLED = TEXT_SECONDARY
 
-# General Spacing
-SPACE_XL = 10
-SPACE_L = 8
-SPACE = 5
-SPACE_S = 2
+# General Spacing (Legacy)
+# SPACE_XL = 10
+# SPACE_L = 8
+# SPACE = 5
+# SPACE_S = 2
 
 
 # Window / Frame spacing
 WINDOW_PAD = 5     # Gap from window edge
 FRAME_GAP = 2   # Half of gap between adjacent frames
+
+CARD_INSET = 5      # gap between a page's own frame and its parent frame,
+# so the parent's rounded corner stays visible. Mainly for page to content frame padding
 
 # Header
 HEADER_LEFT_BTN_PADX = (WINDOW_PAD, FRAME_GAP)
@@ -41,15 +44,35 @@ SIDEBAR_BTN_PADY = FRAME_GAP
 # Content
 CONTENT_PAD = 10
 
+# Padding y
+PAGE_TOP = (WINDOW_PAD, FRAME_GAP)
+SECTION = (0, FRAME_GAP)
+PAGE_BOTTOM = (0, WINDOW_PAD)
+
+# Padding X
+PAGE_SIDES = WINDOW_PAD
+
+# Note for future
+
+# PAGE_PAD_X = 16
+# PAGE_PAD_Y = 16
+# 
+# SECTION_GAP = 8
+
+# PAGE_TOP = (PAGE_PAD_Y, SECTION_GAP)
+# SECTION = (0, SECTION_GAP)
+# PAGE_BOTTOM = (0, PAGE_PAD_Y)
+
 # Fonts
 TITLE_FONT = None
 HEADING_FONT = None
 BODY_FONT = None
 SMALL_FONT = None
 BUTTON_FONT = None
+SMALL_HEADING_FONT = None
 
 def init_fonts():
-    global TITLE_FONT, HEADING_FONT, BODY_FONT, SMALL_FONT, BUTTON_FONT
+    global TITLE_FONT, HEADING_FONT, BODY_FONT, SMALL_FONT, BUTTON_FONT, SMALL_HEADING_FONT
 
     TITLE_FONT = ctk.CTkFont(
         family="League Spartan",
@@ -61,6 +84,12 @@ def init_fonts():
         family="League Spartan",
         size=20,
         weight="bold"
+    )
+
+    SMALL_HEADING_FONT = ctk.CTkFont(
+        family="League Spartan",
+        size=15,
+        weight="normal"
     )
 
     BODY_FONT = ctk.CTkFont(
@@ -76,5 +105,5 @@ def init_fonts():
     BUTTON_FONT = ctk.CTkFont(
         family="League Spartan",
         size=15,
-        weight="bold"
+        weight="normal"
     )

@@ -80,3 +80,18 @@ def create_frames(app):
         frames[spec["name"]] = frame
     return frames
 
+# Universal page grid setup
+# To be first lines in each page.build() func.
+
+def build_page_frame(parent):
+    frame = ctk.CTkFrame(parent, fg_color=theme.CONTENT_BG)
+    
+    frame.grid(
+        row = 0,
+        column = 0,
+        sticky = "nsew",
+        padx = theme.CARD_INSET,
+        pady = theme.CARD_INSET
+    )
+
+    return frame

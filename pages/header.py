@@ -17,7 +17,6 @@ BUTTON_SPECS = [
         "anchor": "center",
         "sticky": "w",
         "padx": theme.HEADER_LEFT_BTN_PADX,
-        "pady": theme.HEADER_BTN_PADY,
         "font": theme.HEADING_FONT
     },
     {
@@ -56,7 +55,7 @@ def build(parent):
             row=0,
             sticky=spec.get("sticky"),
             padx=spec.get("padx", 0),
-            pady=spec.get("pady", 2.5)
+            pady=spec.get("pady", theme.HEADER_BTN_PADY)
         )
 
         buttons[spec["name"]] = btn
