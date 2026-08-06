@@ -28,3 +28,5 @@ htmlcov/
 Thumbs.db
 
 config/
+config/credentials.json
+config/token.json
