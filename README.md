@@ -1,2 +1,2 @@
 # Hi!
-This is where I messed with cutomtkinter to get the hang of making a simple UI.
+This is where I tinkered with Python, CustomTkinter, and Google Workspace APIs to build myself a custom dashboard for college.
