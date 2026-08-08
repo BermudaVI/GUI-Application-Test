@@ -3,6 +3,7 @@
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from auth import get_credentials
+import json
 
 
 def get_service():
@@ -40,3 +41,17 @@ def get_tasks(list_id):
     except Exception as err:
         print(f"Oops! An error occured? Here: {err}")
         return []
+
+def update_task(task_id):
+    try:
+        service = get_service()
+    except:
+        print("die")
+
+
+
+task_lists = get_task_lists()
+tasks = get_tasks("MDA5MjI5MzkyMTY5MTg2OTAyNTc6MDow")
+
+with open("Tasks.json", "w") as json_file:
+        json.dump(tasks, json_file, indent=4)

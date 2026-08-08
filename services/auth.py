@@ -35,21 +35,3 @@ def get_credentials():
         token.write(creds.to_json())
 
     return creds
-
-
-#  try:
-#    service = build("tasks", "v1", credentials=creds)
-#
-#    # Call the Tasks API
-#    results = service.tasklists().list(maxResults=10).execute()
-#    items = results.get("items", [])
-#
-#    if not items:
-#      print("No task lists found.")
-#      return
-#
-#    print("Task lists:")
-#    for item in items:
-#      print(f"{item['title']} ({item['id']})")
-#  except HttpError as err:
-#    print(err)

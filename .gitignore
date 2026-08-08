@@ -30,3 +30,6 @@ Thumbs.db
 config/
 config/credentials.json
 config/token.json
+
+tasks.json
+task\ lists.json

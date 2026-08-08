@@ -2,6 +2,8 @@ import tkinter as tk
 import customtkinter as ctk
 import theme
 from layout import build_page_frame
+from widgets.task import TaskWidget, Task
+
 
 # Tasks specific funcs
 def new_task():
@@ -105,5 +107,60 @@ def build(parent):
         pady=theme.PAGE_BOTTOM
     )
 
+    # Get Task Data
+    tasks = [
+        {
+            "kind": "tasks#task",
+            "id": "THo0TFhVbEtENlNlZHZLSA",
+            "etag": "\"QHPfUrSKoUU\"",
+            "title": "Test",
+            "updated": "2026-08-08T06:35:41.778Z",
+            "selfLink": "https://www.googleapis.com/tasks/v1/lists/MDA5MjI5MzkyMTY5MTg2OTAyNTc6MDow/tasks/THo0TFhVbEtENlNlZHZLSA",
+            "position": "00000000000000000000",
+            "notes": "Details Here.",
+            "status": "needsAction",
+            "due": "2026-08-15T00:00:00.000Z",
+            "links": [],
+            "webViewLink": "https://tasks.google.com/task/Lz4LXUlKD6SedvKH?sa=6"
+        },
+        {
+            "kind": "tasks#task",
+            "id": "d0JnWDhqa2JEQ2F1RzZaag",
+            "etag": "\"XunNpZhfTY8\"",
+            "title": "Test2",
+            "updated": "2026-08-08T06:24:47.060Z",
+            "selfLink": "https://www.googleapis.com/tasks/v1/lists/MDA5MjI5MzkyMTY5MTg2OTAyNTc6MDow/tasks/d0JnWDhqa2JEQ2F1RzZaag",
+            "position": "00000000000000000001",
+            "notes": "Other Details Here.",
+            "status": "needsAction",
+            "due": "2026-08-15T00:00:00.000Z",
+            "links": [],
+            "webViewLink": "https://tasks.google.com/task/wBgX8jkbDCauG6Zj?sa=6"
+        }
+    ]
+
+    # Create Task Widgets
+
+    for data in tasks:
+        task = Task(
+        data["id"],
+        data["title"],
+        data.get("due"),
+        data["position"],
+        data.get("notes"),
+        data["status"]
+    )
+
+    task1 = TaskWidget(
+        tasks_area,
+        task
+    )
+
+    task1.pack(
+        fill="x",
+        padx=theme.CARD_INSET,
+        pady=theme.FRAME_GAP
+    )
 
     return frame
+
